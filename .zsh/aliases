@@ -1,0 +1,43 @@
+# Auto extension stuff
+alias -s txt=vim
+alias -s c=vim
+alias -s cpp=vim
+alias -s h=vim
+alias -s py=vim
+alias -s errors=less
+alias -s error=less
+alias -s log=less
+alias -s png=gqview
+alias -s jpg=gqview
+alias -s gif=gqview
+alias -s pdf=evince
+
+# Normal stuff 
+alias -g G='| egrep --color=auto -n'
+alias ls='ls -G'
+alias yuki="ssh 192.168.2.11"
+alias name="uname -n"
+alias gh='fc -l 0 | grep'                                # grep history
+alias dh='dirs -v'                                       # directory history
+alias ag='alias | grep -i'                               # alias grep
+alias ..='cd ..'
+alias mem="free -m"
+alias :q='exit'
+alias :q!='exit'
+alias ftp='ncftp'
+
+alias sctr='scp dl/*.torrent 192.168.2.11: && rm dl/*.torrent'
+
+alias updatedb='sudo updatedb'
+alias clyde='sudo clyde'                                 # running clyde with sudo
+alias mv='nocorrect mv'                                  # no spelling correction for mv
+alias cp='nocorrect cp'                                  # no spelling correction for cp
+alias mkdir='nocorrect mkdir'                            # no spelling correction for mkdir
+
+alias pacman32="pacman --root /opt/arch32 --cachedir /opt/arch32/var/cache/pacman/pkg --config /opt/arch32/pacman.conf"
+
+#alias lockscreen='dcop kdesktop KScreensaverIface lock' # kde-lockscreen
+#alias lockscreen='xscreensaver-command -lock'           # xscreensaver-lock
+
+alias -g L='|less'                                       # command L equivalent to command |less
+

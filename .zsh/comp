@@ -1,0 +1,31 @@
+# allow approximate
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# cd menu & no selected parents
+zstyle ':completion:*:cd:*' menu yes select 
+zstyle ':completion:*:cd:*' ignore-parents parent pwd 
+
+# completion style improvements
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+
+# kill
+zstyle ':completion:*:kill:*' menu yes selectG
+
+zstyle ':completion:*:kill:*' force-list always
+
+# all processes
+zstyle ':completion:*:processes' command 'ps -A'
+
+# man pages
+zstyle ':completion:*:manuals' menu yes select
+
+# cache completions
+zstyle ':completion::complete:*' use-cache 1
+
+# ssh known hosts completion
+local _myhosts
+_myhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
+zstyle ':completion:*' hosts $_myhosts

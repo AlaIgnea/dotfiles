@@ -1,0 +1,1 @@
+-p -ta r -x 600 -y 0 -w 680 -h 17 -e 'onexit=ungrabmouse'

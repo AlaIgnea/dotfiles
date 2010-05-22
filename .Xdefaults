@@ -1,0 +1,87 @@
+! ----------------------------------------------------------------------------
+! file:     ~/.Xdefaults
+! author:   keksvernichter at gmail.com
+! vim:enc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=xdefaults:
+! ----------------------------------------------------------------------------
+
+! terminal colors ------------------------------------------------------------
+! tangoesque scheme
+*background: #111111
+*foreground: #babdb6
+! Black + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMagenta + Magenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff
+
+! Xcursor --------------------------------------------------------------------
+Xcursor*theme: Vanilla-DMZ-AA
+Xcursor.size:  22
+
+! Xft settings ---------------------------------------------------------------
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+! rxvt-unicode ---------------------------------------------------------------
+! font preference
+urxvt*font:      -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+urxvt*boldFont:  -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+!internal whitespace
+urxvt*internalBorder:     5
+!fade text n% upon unfocus
+urxvt*fading:             40
+!darken=(0 to 100) lighten=(-1 to -100)
+urxvt*shading:            20
+!tint background with this color
+urxvt*tintColor:          black
+!set to 32-bit for real transparency (compositing required)
+urxvt*depth:             24
+!save n lines of scrollback buffer
+urxvt*saveLines:          32767
+!jump to bottom on keypress
+urxvt*scrollTtyKeypress:  true
+!jump to bottom when tty gets new lines
+urxvt*scrollWithBuffer:   false
+!jump to bottom on tty output
+urxvt*scrollTtyOutput:    false
+!toggle scrollbar
+urxvt*scrollBar:          false
+!enable pseudo-transparency
+urxvt*inheritPixmap:      true
+!delimiters for double-click mouse selection
+urxvt*cutchars:           "()*,<>[]{}|"
+!secondary screen scroll (default enabled)
+urxvt*secondaryScroll:    true
+!inhibit writing record into the system log file utmp
+urxvt*utmpInhibit:        true
+! URL-Launcher
+urxvt*perl-lib:           /usr/lib/urxvt/perl/
+urxvt*perl-ext-common:    default,matcher
+urxvt*urlLauncher:        /usr/bin/firefox
+urxvt*matcher.button:     1
+
+!transparent=0000 opaque=ffff
+urxvt*background: rgba:1111/1111/1111/dddd
+

@@ -1,0 +1,11 @@
+set sw=4
+set tabstop=2
+set autoindent
+set tw=0
+set nobackup
+set number
+set incsearch
+set hlsearch
+set showmode 
+set ruler
+syntax on
