@@ -1,7 +1,7 @@
 {-- xmonad.hs | 
 Original Author: Jelle van der Waa ( jelly12gen )
 
-modified by keksvernichter @ gmail.com ( AlaIgnea )
+modified by keksvernichter @ gmail.com 
 --}
  
 -- Import stuff
