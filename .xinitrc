@@ -7,7 +7,5 @@ eval `dbus-launch --sh-syntax`
 /home/scripts/touchpadtest
 # set the cursor
 xsetroot -cursor_name left_ptr
-# X compositing manager
-xcompmgr -c &
 # window manager
 exec xmonad
