@@ -1,13 +1,29 @@
-Few files as backup
+commit 11082a4ea0d546bd888ca878aeee0fe5a33c611a
+Author: Uwe <keksvernichter@gmail.com>
+Date:   Mon May 24 14:11:46 2010 +0200
 
-.Xdefaults
-.dzen2_l
-.dzen2_r
-.dzen_conkyrc
-.vimrc
-.xinitrc
-.xmonad/xmonad.hs
-.zsh/S60_prompt
-.zsh/aliases
-.zsh/comp
-.zshrc
+    modified .zshrc - 24-05-10
+
+commit 38a7e22dfc940b1c0d9539c7766bd00ce9e8a87a
+Author: Uwe <keksvernichter@gmail.com>
+Date:   Sat May 22 14:21:23 2010 +0200
+
+    Updated .xmonad/xmonad.hs - 22-05-10
+
+commit a622977576165b811975232eb64a38fe1e68c223
+Author: Uwe <keksvernichter@gmail.com>
+Date:   Sat May 22 14:19:45 2010 +0200
+
+    Updated .xmonad/xmonad.hs - 22-05-10
+
+commit 31825dd4ee095ee03ae7c06f3fecda4bd6aaa915
+Author: Uwe <keksvernichter@gmail.com>
+Date:   Sat May 22 14:16:28 2010 +0200
+
+    Updated README - 22-05-10
+
+commit 5a10a7e2b3590b7e3f48f409faab17903a02c846
+Author: Uwe <keksvernichter@gmail.com>
+Date:   Sat May 22 14:12:08 2010 +0200
+
+    Files added @ 10-05-22
