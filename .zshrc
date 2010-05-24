@@ -13,13 +13,6 @@ setopt histignorespace          # don't save lines starting with spaces
 setopt ignoreeof                # instead of ^D type exit or logout
 setopt noclobber                # don't accidentially overwrite an existing file
 
-# this will set the titlebar to user@host@TTY: directory
-case $TERM in
-	xterm*|rxvt*)
-  	 precmd () {print -Pn "\e]0;%n@%m@$TTY: %~\a"}
-  	 ;;
-esac
-
 PATH="${PATH}:/home/scripts"
 
 # History 
