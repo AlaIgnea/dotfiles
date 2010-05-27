@@ -1,0 +1,26 @@
+# Write your default config options here!
+vo=xv
+fs=yes
+zoom=yes
+vf-add=screenshot
+
+ao=alsa
+mixer-channel="Master"
+channels=6
+
+alang=jp,jpn
+slang=en,eng
+# Find ASS subs and use the fonts provided in the file if possible
+ass=1
+embeddedfonts=1
+fontconfig=1
+# The highest level of subtitle anti-aliasing
+spuaa=4
+# Less stdout text
+quiet=1
+
+lirc="0"
+nojoystick=1
+
+cache=16000
+lavdopts=skiploopfilter=all:threads=2
