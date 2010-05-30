@@ -46,8 +46,8 @@ Xft.hintstyle:  hintslight
 
 ! rxvt-unicode ---------------------------------------------------------------
 ! font preference
-urxvt*font:      -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
-urxvt*boldFont:  -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+urxvt*font:      -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
+urxvt*boldFont:  -*-profont-*-*-*-*-12-*-*-*-*-*-*-*
 !internal whitespace
 urxvt*internalBorder:     5
 !fade text n% upon unfocus
