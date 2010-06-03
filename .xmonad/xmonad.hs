@@ -79,8 +79,8 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
                 , className =? "VirtualBox"           --> doShift "6:vbox"
                 , className =? "Evince"               --> doShift "4:pdf"]
 
-								]
-																		) <+> manageDocks
+                ]
+                                 ) <+> manageDocks
 
 --logHook
 myLogHook :: Handle -> X ()
