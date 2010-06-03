@@ -1,7 +1,7 @@
 Config { font         = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"  
              , bgColor      = "#000000"
              , fgColor      = "#00FFFF"
-	           , position     = Top
+             , position     = Top
              , lowerOnStart = False
              , commands     = [ Run Network "wlan0" ["-L","0","-H","32","-l", "green", "--normal","orange","--high","red"] 40
                               , Run Cpu ["<cpu0>/<cpu1>","-L","3","-H","50","-l","green","--normal","orange","--high","red"]   40

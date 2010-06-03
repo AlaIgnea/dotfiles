@@ -48,36 +48,36 @@ import Data.Ratio ((%))
 
 -- Main --
 main = do
-	xmproc <- spawnPipe "xmobar"
-	xmonad  $ withUrgencyHook NoUrgencyHook $ defaultConfig
-	  { manageHook            = myManageHook
-		, layoutHook            = myLayoutHook 
-		, borderWidth           = myBorderWidth
-		, normalBorderColor     = myNormalBorderColor
-		, focusedBorderColor    = myFocusedBorderColor
-		, keys                  = myKeys
-		, logHook               = myLogHook xmproc
-		, modMask               = myModMask
-		, terminal              = myTerminal
-		, workspaces            = myWorkspaces
-		, focusFollowsMouse     = False
-		}
+  xmproc <- spawnPipe "xmobar"
+  xmonad  $ withUrgencyHook NoUrgencyHook $ defaultConfig
+    { manageHook            = myManageHook
+    , layoutHook            = myLayoutHook 
+    , borderWidth           = myBorderWidth
+    , normalBorderColor     = myNormalBorderColor
+    , focusedBorderColor    = myFocusedBorderColor
+    , keys                  = myKeys
+    , logHook               = myLogHook xmproc
+    , modMask               = myModMask
+    , terminal              = myTerminal
+    , workspaces            = myWorkspaces
+    , focusFollowsMouse     = False
+    }
  
 -- hooks
 -- automaticly switching app to workspace
 myManageHook :: ManageHook
 myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( composeAll . concat $
                 [ [ isFullscreen                      --> doFullFloat 
-                , className =? "OpenOffice.org"       --> doShift "5:doc"
-                , className =? "Xmessage"             --> doCenterFloat
-                , className =? "Zenity"               --> doCenterFloat
-                , className =? "feh"                  --> doCenterFloat
-                , className =? "GQview"               --> doCenterFloat
-                , className =? "Gimp"                 --> doShift "9:gimp"
-                , className =? "Namoroka"             --> doShift "2:web"
-                , className =? "MPlayer"              --> doShift "8:vid"
-                , className =? "VirtualBox"           --> doShift "6:vbox"
-                , className =? "Evince"               --> doShift "4:pdf"]
+                  , className =? "OpenOffice.org"       --> doShift "5:doc"
+                  , className =? "Xmessage"             --> doCenterFloat
+                  , className =? "Zenity"               --> doCenterFloat
+                  , className =? "feh"                  --> doCenterFloat
+                  , className =? "GQview"               --> doCenterFloat
+                  , className =? "Gimp"                 --> doShift "9:gimp"
+                  , className =? "Namoroka"             --> doShift "2:web"
+                  , className =? "MPlayer"              --> doShift "8:vid"
+                  , className =? "VirtualBox"           --> doShift "6:vbox"
+                  , className =? "Evince"               --> doShift "4:pdf"]
 
                 ]
                                  ) <+> manageDocks
@@ -101,21 +101,21 @@ customPP = defaultPP
 -- some nice colors for the prompt windows to match the xmobar status bar.
 myXPConfig = defaultXPConfig
     { font     = "-*-profont-*-*-*-*-12-*-*-*-*-*-*-u"
-	, fgColor  = "#00FFFF"
-	, bgColor  = "#000000"
-	, bgHLight = "#000000"
-	, fgHLight = "#FF0000"
-	, position = Top
+    , fgColor  = "#00FFFF"
+    , bgColor  = "#000000"
+    , bgHLight = "#000000"
+    , fgHLight = "#FF0000"
+    , position = Top
     }
  
 --- My Theme For Tabbed layout
 myTheme = defaultTheme 
-	{ decoHeight          = 16
-	, activeColor         = "#a6c292"
-	, activeBorderColor   = "#a6c292"
-	, activeTextColor     = "#000000"
-	, inactiveBorderColor = "#000000"
-	}
+    { decoHeight          = 16
+    , activeColor         = "#a6c292"
+    , activeBorderColor   = "#a6c292"
+    , activeTextColor     = "#000000"
+    , inactiveBorderColor = "#000000"
+    }
 
 --LayoutHook
 myLayoutHook = onWorkspace "1:chat" webL $ onWorkspace "2:web" webL $ onWorkspace "6:vbox" fullL $ onWorkspace "8:vid" fullL $ onWorkspace "9:gimp" gimpL $ standardLayouts
