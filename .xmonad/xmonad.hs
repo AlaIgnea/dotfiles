@@ -1,7 +1,7 @@
 {-- xmonad.hs | 
 Original Author: Jelle van der Waa ( jelly12gen )
-
 modified by keksvernichter @ gmail.com 
+###works only with xmonad-darcs (03-06-10###
 --}
  
 -- Import stuff
