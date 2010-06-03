@@ -69,10 +69,10 @@ myManageHook :: ManageHook
 myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( composeAll . concat $
                 [ [ isFullscreen                      --> doFullFloat 
                 , className =? "OpenOffice.org"       --> doShift "5:doc"
-								, className =? "Xmessage"             --> doCenterFloat
-								, className =? "Zenity"               --> doCenterFloat
+                , className =? "Xmessage"             --> doCenterFloat
+                , className =? "Zenity"               --> doCenterFloat
                 , className =? "feh"                  --> doCenterFloat
-								, className =? "GQview"               --> doCenterFloat
+                , className =? "GQview"               --> doCenterFloat
                 , className =? "Gimp"                 --> doShift "9:gimp"
                 , className =? "Namoroka"             --> doShift "2:web"
                 , className =? "MPlayer"              --> doShift "8:vid"
