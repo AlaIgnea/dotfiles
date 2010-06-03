@@ -1,4 +1,4 @@
-Config { font         = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"  
+Config { font               = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"  
              , bgColor      = "#000000"
              , fgColor      = "#00FFFF"
              , position     = Top
