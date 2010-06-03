@@ -72,6 +72,7 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
 								, className =? "Xmessage"             --> doCenterFloat
 								, className =? "Zenity"               --> doCenterFloat
                 , className =? "feh"                  --> doCenterFloat
+								, className =? "GQview"               --> doCenterFloat
                 , className =? "Gimp"                 --> doShift "9:gimp"
                 , className =? "Namoroka"             --> doShift "2:web"
                 , className =? "MPlayer"              --> doShift "8:vid"
@@ -211,9 +212,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 		, ((modMask .|. shiftMask, xK_l), sendMessage MirrorExpand)
 
 		-- Programs
-    , ((modMask, xK_f), spawn "/usr/bin/firefox")
-    , ((modMask, xK_o), spawn "/usr/bin/ooffice")
-    , ((modMask, xK_Print), spawn "/home/scripts/scrotinput")
+		, ((modMask, xK_f), spawn "/usr/bin/firefox")
+		, ((modMask, xK_o), spawn "/usr/bin/ooffice")
+		, ((modMask, xK_Print), spawn "/home/scripts/scrotinput")
 
 		-- quit or restart
 		, ((modMask .|. shiftMask, xK_q), io (exitWith ExitSuccess))
