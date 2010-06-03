@@ -100,7 +100,7 @@ customPP = defaultPP
 
 -- some nice colors for the prompt windows to match the xmobar status bar.
 myXPConfig = defaultXPConfig
-    { font     = "-*-profont-*-*-*-*-12-*-*-*-*-*-*-u"
+    { font     = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"
     , fgColor  = "#00FFFF"
     , bgColor  = "#000000"
     , bgHLight = "#000000"
@@ -182,7 +182,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 		-- layouts
 		, ((modMask, xK_space), sendMessage NextLayout)
 		, ((modMask .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
-		, ((modMask, xK_b), sendMessage ToggleStruts)
 
 		-- floating layer stuff
 		, ((modMask, xK_t), withFocused $ windows. W.sink)
@@ -212,7 +211,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 		, ((modMask .|. shiftMask, xK_l), sendMessage MirrorExpand)
 
 		-- Programs
-		, ((modMask, xK_f), spawn "/usr/bin/firefox")
+		, ((modMask, xK_b), spawn "/usr/bin/google-chrome")
 		, ((modMask, xK_o), spawn "/usr/bin/ooffice")
 		, ((modMask, xK_Print), spawn "/home/scripts/scrotinput")
 
