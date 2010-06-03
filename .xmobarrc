@@ -13,5 +13,5 @@ Config { font               = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-u"
                               ]
              , sepChar      = "%"
              , alignSep     = "}{"
-	     , template = " %StdinReader% }{ %mpc% <fc=#0033FF>|</fc>  %cpu% <fc=#0033FF>|</fc>  %memory% <fc=#0033FF>|</fc> %wlan0% <fc=#0033FF>|</fc> %date% <fc=#0033FF>|</fc> %battery%"
+             , template     = " %StdinReader% }{ %mpc% <fc=#0033FF>|</fc>  %cpu% <fc=#0033FF>|</fc>  %memory% <fc=#0033FF>|</fc> %wlan0% <fc=#0033FF>|</fc> %date% <fc=#0033FF>|</fc> %battery%"
              }
