@@ -24,7 +24,7 @@ hist_save_no_dups inc_append_history \
 extended_history share_history multios
 
 # $browser for python
-BROWSER="firefox '%s'"
+BROWSER="google-chrome '%s'"
 
 ## some vars
 # PS1 
@@ -36,4 +36,5 @@ source "${HOME}/.login"
 source "${HOME}/.zsh/aliases"
 source "${HOME}/.zsh/comp"
 source "${HOME}/.zsh/S60_prompt"
+source "${HOME}/.zsh/functions"
 
