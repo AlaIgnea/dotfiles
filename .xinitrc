@@ -2,7 +2,7 @@
 # dbus
 eval `dbus-launch --sh-syntax`
 # background
-/usr/bin/feh --bg-scale $HOME/.louise_francoise_et_shana_et_nagi.jpg
+/usr/bin/feh --bg-scale $HOME/.wallpaper.png
 # touchpad toggle
 /home/scripts/touchpadtest
 # set the cursor

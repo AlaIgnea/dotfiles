@@ -6,7 +6,7 @@ vf-add=screenshot
 
 ao=alsa
 mixer-channel="Master"
-channels=6
+channels=2
 
 alang=jp,jpn
 slang=en,eng
