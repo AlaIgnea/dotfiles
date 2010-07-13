@@ -71,13 +71,15 @@ myManageHook :: ManageHook
 myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( composeAll . concat $
   [ [ isFullscreen                       --> myDoFullFloat                              ]
   , [ className =? c                     --> doCenterFloat     |  c    <- myCenterFloats ]
+  , [ className =? c                     --> doShift "1:chat"  |  c    <- myChats        ]
   , [ className =? c                     --> doShift "2:web"   |  c    <- myWebs         ]
-  , [ className =? c                     --> doShift "4:pdf"   |  c    <- myPdf          ]
+  , [ className =? c                     --> doShift "4:doc"   |  c    <- myDocs         ]
   , [ className =? c                     --> doShift "5:doc"   |  c    <- myDocs         ]
   , [ className =? c                     --> doShift "6:vbox"  |  c    <- myVirt         ]
+  , [ className =? c                     --> doShift "7:music" |  c    <- myQL           ]
   , [ className =? c                     --> doShift "8:vid"   |  c    <- myVid          ]
   , [ className =? c                     --> doShift "9:gimp"  |  c    <- myGimp         ]
-  , [ className =? c                     --> doShift "7:music" |  c    <- myQL           ]
+  , [ title     =? c                     --> doShift "8:vid"   |  c    <- myVids         ]
   ] ) <+> manageDocks
   
   where
@@ -89,20 +91,22 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
     myCenterFloats = ["Xmessage","Zenity","feh","GQview"]   ++
                      ["XFontSel","Save As...","MPlayer"]
 
+    myChats        = ["Pino","Xchat"]
+
     myWebs         = ["Namoroka","Firefox","Google-chrome"] ++
                      ["Chromium"]
 
-    myDocs         = ["OpenOffice.org"]
+    myDocs         = ["OpenOffice.org 3.2","Evince"]
 
     myGimp         = ["Gimp"]
 
-    myVid          = ["MPlayer","VLC media player"]
-
-    myVirt         = ["VirtualBox"]
-
-    myPdf          = ["Evince"]
-
     myQL           = ["Quodlibet"]
+
+    myVid          = ["MPlayer"]
+
+    myVirt         = ["VirtualBox","Wine"]
+
+    myVids         = ["VLC media player"]
 
 -- a trick for fullscreen but stil allow focusing of other WSs
 myDoFullFloat :: ManageHook
