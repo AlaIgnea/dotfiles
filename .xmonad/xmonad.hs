@@ -65,13 +65,14 @@ main = do
 myManageHook :: ManageHook
 myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( composeAll . concat $
   [ [ isFullscreen                       --> myDoFullFloat                              ]
-  , [ className =? c                     --> doCenterFloat    |  c    <- myCenterFloats ]
-  , [ className =? c                     --> doShift "2:web"  |  c    <- myWebs         ]
-  , [ className =? c                     --> doShift "4:pdf"  |  c    <- myPdf          ]
-  , [ className =? c                     --> doShift "5:doc"  |  c    <- myDocs         ]
-  , [ className =? c                     --> doShift "6:vbox" |  c    <- myVirt         ]
-  , [ className =? c                     --> doShift "8:vid"  |  c    <- myVid          ]
-  , [ className =? c                     --> doShift "9:gimp" |  c    <- myGimp         ]
+  , [ className =? c                     --> doCenterFloat     |  c    <- myCenterFloats ]
+  , [ className =? c                     --> doShift "2:web"   |  c    <- myWebs         ]
+  , [ className =? c                     --> doShift "4:pdf"   |  c    <- myPdf          ]
+  , [ className =? c                     --> doShift "5:doc"   |  c    <- myDocs         ]
+  , [ className =? c                     --> doShift "6:vbox"  |  c    <- myVirt         ]
+  , [ className =? c                     --> doShift "8:vid"   |  c    <- myVid          ]
+  , [ className =? c                     --> doShift "9:gimp"  |  c    <- myGimp         ]
+  , [ className =? c                     --> doShift "7:music" |  c    <- myQL           ]
   ] ) <+> manageDocks
   
   where
@@ -95,6 +96,8 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
     myVirt         = ["VirtualBox"]
 
     myPdf          = ["Evince"]
+
+    myQL           = ["Quodlibet"]
 
 -- a trick for fullscreen but stil allow focusing of other WSs
 myDoFullFloat :: ManageHook
@@ -177,7 +180,7 @@ myFocusedBorderColor = "#FF0000"
   
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vbox", "7:games", "8:vid", "9:gimp"]
+myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vbox", "7:music", "8:vid", "9:gimp"]
 
 -- Switch to the "web" workspace
 viewWeb = windows (W.greedyView "2:web") -- (0,0a)
