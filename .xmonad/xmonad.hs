@@ -1,4 +1,9 @@
-{-- xmonad.hs | works only with xmonad-darcs and xmonad-contrib-darcs (04-06-10)
+{-- xmonad.hs 
+    required:
+    - xmonad-darcs as of 01-07-2010
+    - xmonad-contrib-darcs as of 01-07-2010
+    - xmobar
+    - profont
 --}
  
 -- Import stuff
@@ -240,6 +245,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ++
   -- mod-[1..9] %! Switch to workspace N
   -- mod-shift-[1..9]] %! Move client to workspace N
-  [((m .|. modMask, k), windows $ f i)
-    | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-    , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+  [
+  ((m .|. modMask, k), windows $ f i)
+  | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
+  , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+  ]
