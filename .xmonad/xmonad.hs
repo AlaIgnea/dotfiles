@@ -74,7 +74,6 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
   , [ className =? c                     --> doShift "1:chat"  |  c    <- myChats        ]
   , [ className =? c                     --> doShift "2:web"   |  c    <- myWebs         ]
   , [ className =? c                     --> doShift "4:doc"   |  c    <- myDocs         ]
-  , [ className =? c                     --> doShift "5:doc"   |  c    <- myDocs         ]
   , [ className =? c                     --> doShift "6:vbox"  |  c    <- myVirt         ]
   , [ className =? c                     --> doShift "7:music" |  c    <- myQL           ]
   , [ className =? c                     --> doShift "8:vid"   |  c    <- myVid          ]
@@ -189,7 +188,7 @@ myFocusedBorderColor = "#FF0000"
   
 --Workspaces
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = ["1:chat", "2:web", "3:code", "4:pdf", "5:doc", "6:vbox", "7:music", "8:vid", "9:gimp"]
+myWorkspaces = ["1:chat", "2:web", "3:code", "4:doc", "5:foo", "6:vbox", "7:music", "8:vid", "9:gimp"]
 
 -- Switch to the "web" workspace
 viewWeb = windows (W.greedyView "2:web") -- (0,0a)
