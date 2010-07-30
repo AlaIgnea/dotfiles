@@ -1,4 +1,4 @@
-autoload -U compinit promptinit zmv
+autoload -U compinit promptinit zmv url-quote-magic
 compinit
 promptinit
 prompt bart                     # bart theme
@@ -38,3 +38,5 @@ source "${HOME}/.zsh/comp"
 source "${HOME}/.zsh/S60_prompt"
 source "${HOME}/.zsh/functions"
 
+# url quoting
+zle -N self-insert url-quote-magic
