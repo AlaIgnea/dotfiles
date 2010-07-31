@@ -90,7 +90,7 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
     myCenterFloats = ["Xmessage","Zenity","feh","GQview"]   ++
                      ["XFontSel","Save As...","MPlayer"]
 
-    myChats        = ["Pino","Xchat"]
+    myChats        = ["Pino","Xchat","Choqok"]
 
     myWebs         = ["Namoroka","Firefox","Google-chrome"] ++
                      ["Chromium"]
