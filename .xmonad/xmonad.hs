@@ -93,7 +93,7 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
     myChats        = ["Pino","Xchat","Choqok"]
 
     myWebs         = ["Namoroka","Firefox","Google-chrome"] ++
-                     ["Chromium"]
+                     ["Chromium", "Opera"]
 
     myDocs         = ["OpenOffice.org 3.2","Evince"]
 
