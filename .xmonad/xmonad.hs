@@ -176,6 +176,7 @@ myTerminal = "urxvt"
 -- modmask
 myModMask :: KeyMask
 myModMask = mod4Mask
+altMask   = mod1Mask
    
 -- borders
 myBorderWidth :: Dimension
@@ -199,51 +200,53 @@ myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- kiling programs
-  [ ((modMask ,              xK_Return ), spawn $ XMonad.terminal conf       )
-  , ((modMask .|. shiftMask, xK_c      ), kill                               )
+  [ ((modMask ,                xK_Return ), spawn $ XMonad.terminal conf       )
+  , ((modMask .|. shiftMask,   xK_c      ), kill                               )
 
   -- opening program launcher
-  , ((modMask ,              xK_p      ), shellPrompt myXPConfig             )
+  , ((modMask ,                xK_p      ), shellPrompt myXPConfig             )
 
   -- GridSelect
-  , ((modMask ,              xK_g      ), goToSelected defaultGSConfig       )
+  , ((modMask ,                xK_g      ), goToSelected defaultGSConfig       )
 
   -- layouts
-  , ((modMask,               xK_space  ), sendMessage NextLayout             )
-  , ((modMask .|. shiftMask, xK_space  ), setLayout $ XMonad.layoutHook conf )
+  , ((modMask,                 xK_space  ), sendMessage NextLayout             )
+  , ((modMask .|. shiftMask,   xK_space  ), setLayout $ XMonad.layoutHook conf )
 
   -- floating layer stuff
-  , ((modMask,               xK_t      ), withFocused $ windows. W.sink      )
+  , ((modMask,                 xK_t      ), withFocused $ windows. W.sink      )
 
   -- focus
-  , ((modMask,               xK_Tab    ), windows W.focusDown                )
-  , ((modMask,               xK_j      ), windows W.focusDown                )
-  , ((modMask,               xK_k      ), windows W.focusUp                  )
-  , ((modMask,               xK_m      ), windows W.focusMaster              )
+  , ((modMask,                 xK_Tab    ), windows W.focusDown                )
+  , ((modMask,                 xK_j      ), windows W.focusDown                )
+  , ((modMask,                 xK_k      ), windows W.focusUp                  )
+  , ((modMask,                 xK_m      ), windows W.focusMaster              )
 
   -- swapping
-  , ((modMask .|. shiftMask, xK_Return ), windows W.swapMaster               )
-  , ((modMask .|. shiftMask, xK_j      ), windows W.swapDown                 )
-  , ((modMask .|. shiftMask, xK_k      ), windows W.swapUp                   )
+  , ((modMask .|. shiftMask,   xK_Return ), windows W.swapMaster               )
+  , ((modMask .|. shiftMask,   xK_j      ), windows W.swapDown                 )
+  , ((modMask .|. shiftMask,   xK_k      ), windows W.swapUp                   )
 
   -- increase or decrease number of windows in the master area
-  , ((modMask,               xK_comma  ), sendMessage (IncMasterN 1)         )
-  , ((modMask,               xK_period ), sendMessage (IncMasterN (-1))      )
+  , ((modMask,                 xK_comma  ), sendMessage (IncMasterN 1)         )
+  , ((modMask,                 xK_period ), sendMessage (IncMasterN (-1))      )
 
   -- resizing
-  , ((modMask,               xK_h      ), sendMessage Shrink                 )
-  , ((modMask,               xK_l      ), sendMessage Expand                 )
-  , ((modMask .|. shiftMask, xK_h      ), sendMessage MirrorShrink           )
-  , ((modMask .|. shiftMask, xK_l      ), sendMessage MirrorExpand           )
+  , ((modMask,                 xK_h      ), sendMessage Shrink                 )
+  , ((modMask,                 xK_l      ), sendMessage Expand                 )
+  , ((modMask .|. shiftMask,   xK_h      ), sendMessage MirrorShrink           )
+  , ((modMask .|. shiftMask,   xK_l      ), sendMessage MirrorExpand           )
 
   -- Programs
-  , ((modMask,               xK_b      ), spawn "/usr/bin/google-chrome"     )
-  , ((modMask,               xK_o      ), spawn "/usr/bin/ooffice"           )
-  , ((modMask,               xK_Print  ), spawn "/home/scripts/scrotinput"   )
+  , ((modMask,                 xK_b      ), spawn "/usr/bin/google-chrome"     )
+  , ((modMask,                 xK_o      ), spawn "/usr/bin/ooffice"           )
+  , ((modMask,                 xK_Print  ), spawn "/home/scripts/scrotinput"   )
 
   -- quit or restart
-  , ((modMask .|. shiftMask, xK_q      ), io (exitWith ExitSuccess)          )
-  , ((modMask,               xK_q      ), restart "xmonad" True              )
+  , ((modMask .|. shiftMask,   xK_q      ), io (exitWith ExitSuccess)          )
+  , ((modMask,                 xK_q      ), restart "xmonad" True              )
+  -- lockscreen
+  , ((controlMask .|. altMask, xK_l      ), spawn "/home/scripts/locks"        )
   ]
   ++
   -- mod-[1..9] %! Switch to workspace N
