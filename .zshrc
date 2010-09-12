@@ -13,7 +13,7 @@ setopt histignorespace          # don't save lines starting with spaces
 setopt ignoreeof                # instead of ^D type exit or logout
 setopt noclobber                # don't accidentially overwrite an existing file
 
-PATH="${PATH}:/home/scripts"
+PATH="${PATH}:/home/scripts:/usr/local/bin"
 
 # History 
 HISTFILE=~/.zsh-history

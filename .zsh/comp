@@ -24,8 +24,3 @@ zstyle ':completion:*:manuals' menu yes select
 
 # cache completions
 zstyle ':completion::complete:*' use-cache 1
-
-# ssh known hosts completion
-local _myhosts
-_myhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} )
-zstyle ':completion:*' hosts $_myhosts
