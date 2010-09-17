@@ -1,0 +1,17 @@
+Config { font         = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"  
+       , bgColor      = "#000000"
+       , fgColor      = "#00FFFF"
+       , position     = Static { xpos = 0 , ypos = 0, width = 1280, height = 15 }
+       , lowerOnStart = False
+       , commands     = [ Run Network "wlan0" ["-L","0","-H","60","-l", "green", "--normal","orange","--high","red"] 40
+                        , Run Cpu ["<cpu0>/<cpu1>","-L","3","-H","50","-l","green","--normal","orange","--high","red"]   40
+                        , Run Memory ["-t","Mem: <usedratio>%", "-l", "green", "--normal","orange","--high","red"] 40
+                        , Run Date "%a %b %_d %H:%M" "date" 60
+                        , Run MPD ["-t", "<artist> - <title> (<lapsed>/<length>) <statei>", "--", "-P", ">>", "-Z", "||", "-S", "><"] 10
+                        , Run Battery ["-L","50","-H","75","--high","green","--normal","yellow", "--low", "red"] 10
+                        , Run StdinReader
+                        ]
+       , sepChar      = "%"
+       , alignSep     = "}{"
+       , template     = " %StdinReader% }{ <fc=#0033FF>|</fc>  %cpu% <fc=#0033FF>|</fc>  %memory% <fc=#0033FF>|</fc> %wlan0% <fc=#0033FF>|</fc> %date% <fc=#0033FF>|</fc> %battery%"
+       }

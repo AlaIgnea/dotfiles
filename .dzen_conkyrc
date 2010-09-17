@@ -1,0 +1,11 @@
+background no
+out_to_console yes
+update_interval 2.0
+uppercase no
+use_spacer right
+use_xft yes
+xftfont Bitstream Vera Sans:size=6
+maximum_width 180
+
+TEXT
+^i(/home/uh/.dzen/bitmaps/cpu.xbm) CPU ${cpu cpu1}% ${cpu cpu2}% ${loadavg 1} ^i(/home/uh/.dzen/bitmaps/mem.xbm) RAM $memperc% ${if_empty ${exec awk '{print $2}' /proc/acpi/battery/BAT0/state | grep 'on-line'}} ^i(/home/uh/.dzen/bitmaps/battery.xbm) ${else}^i(/home/uh/.dzen/bitmaps/power-ac.xbm)${endif} ${exec acpitool -b | awk '{print $5}'} $battery_time ${if_empty ${exec /sbin/ifconfig wlan0 | grep 'inet addr:'}}}^i(/home/uh/.dzen/bitmaps/net-wired.xbm) ${downspeed eth0}k/s ^i(/home/uh/.dzen/bitmaps/arr_down.xbm) ${upspeed eth0}k/s ^i(/home/uh/.dzen/bitmaps/arr_up.xbm)${else}^i(/home/uh/.dzen/bitmaps/net-wifi.xbm) ${exec  /usr/sbin/iwconfig wlan0 | grep 'Signal level' | cut -d= -f3 | awk '{print 100+$1 "%"}'} ${exec /usr/sbin/iwgetid | cut -d\" -f2 | awk '{print  $1}'} ${downspeed wlan0}^i(/home/uh/.dzen/bitmaps/arr_down.xbm) ${upspeed wlan0}^i(/home/uh/.dzen/bitmaps/arr_up.xbm) ${endif} ^i(/home/uh/.dzen/bitmaps/clock.xbm) ${time %d-%m-%y %H:%M}
