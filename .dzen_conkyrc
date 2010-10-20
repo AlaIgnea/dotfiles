@@ -1,0 +1,10 @@
+# conkyrc file for dzen
+###
+
+background no
+out_to_console yes
+update_interval 1
+total_run_times 0
+
+TEXT
+${time %a %b %d %H:%M}
