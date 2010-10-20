@@ -2,12 +2,12 @@
   Required:
     - xmonad-darcs as of 01-07-2010
     - xmonad-contrib-darcs as of 01-07-2010
-    - dzen2
     - RssReader.hs and Dzen.hs (http://pbrisbin.com/xmonad/docs/)
+    - haskell-http
+    - haskell-tagsoup
+    - dzen2
     - conky
     - profont
-    - haskell-http
-    - hasekll-tagsoup
 --}
  
 -- Import stuff
