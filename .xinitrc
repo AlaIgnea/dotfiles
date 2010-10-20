@@ -1,4 +1,10 @@
-#!/bin/sh
+#!bin/sh
+# variables
+export PATH="${PATH}:/home/scripts:/usr/local/bin"
+export BROWSER="google-chrome"
+export LANG="en_US.utf8"
+export LC_ALL="en_US.utf8"
+export EDITOR="vim"
 # dbus
 eval `dbus-launch --sh-syntax`
 # background

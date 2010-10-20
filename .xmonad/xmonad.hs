@@ -1,9 +1,13 @@
 {-- xmonad.hs 
-    required:
+  Required:
     - xmonad-darcs as of 01-07-2010
     - xmonad-contrib-darcs as of 01-07-2010
-    - xmobar
+    - dzen2
+    - RssReader.hs and Dzen.hs (http://pbrisbin.com/xmonad/docs/)
+    - conky
     - profont
+    - haskell-http
+    - hasekll-tagsoup
 --}
  
 -- Import stuff
@@ -48,17 +52,23 @@ import XMonad.Layout.Grid
 -- Data.Ratio for IM Layout
 import Data.Ratio ((%))
 
+-- Modules in ~/.xmonad/lib
+import Dzen
+import RssReader
+
 -- Main --
 main = do
-  xmproc <- spawnPipe "xmobar"
-  xmonad  $ withUrgencyHook NoUrgencyHook $ defaultConfig
+  d <- spawnDzen myLeftBar
+  spawnDzen dzenConf >>= spawnReader readerConf   
+  spawn $ "conky -c ~/.dzen_conkyrc | " ++ show myRightBar
+  xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
     { manageHook            = myManageHook
     , layoutHook            = myLayoutHook 
     , borderWidth           = myBorderWidth
     , normalBorderColor     = myNormalBorderColor
     , focusedBorderColor    = myFocusedBorderColor
     , keys                  = myKeys
-    , logHook               = myLogHook xmproc
+    , logHook               = myLogHook d
     , modMask               = myModMask
     , terminal              = myTerminal
     , workspaces            = myWorkspaces
@@ -116,33 +126,72 @@ myDoFullFloat = doF W.focusDown <+> doFullFloat
 myLogHook :: Handle -> X ()
 myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 
+
+---- Statusbar
+
+myLeftBar :: DzenConf
+myLeftBar = defaultDzen
+  { x_position  = 0
+  , width       = 875
+  }
+
+myRightBar :: DzenConf
+myRightBar = myLeftBar
+  { x_position  = 1175
+  , width       = 105
+  , alignment   = RightAlign
+  }
+
+--dzenConf
+dzenConf :: DzenConf
+dzenConf = defaultDzen
+  { x_position  = 875
+  , width       = 300
+  , fg_color    = "#606060"
+  , bg_color    = "#303030"
+  }
+
+--readerConf
+readerConf :: ReaderConf
+readerConf = defaultReaderConf
+  { limit       = 10
+  , titleFormat = dzenFG "#606060"
+  , descrFormat = shorten 400 
+  , tickerWidth = 300 
+  }
+
+  where
+    -- some helpers
+    dzenFG c s  = concat ["^fg(", c, ")", s, "^fg()"]
+    shorten n s = if length s > n then (take n s) ++ "..." else s
+
 ---- Looks --
 ---- bar
 customPP :: PP
 customPP = defaultPP
-  { ppHidden  = xmobarColor "#00FF00" ""
-  , ppCurrent = xmobarColor "#FF0000" "" . wrap "[" "]"
-  , ppUrgent  = xmobarColor "#FF0000" "" . wrap "*" "*"
-  , ppLayout  = xmobarColor "#FF0000" ""
-  , ppTitle   = xmobarColor "#00FF00" "" . shorten 80
-  , ppSep     = "<fc=#0033FF> | </fc>"
+  { ppHidden  = dzenColor "#909090" ""
+  , ppCurrent = dzenColor "#303030" "#909090" . wrap "[" "]"
+  , ppUrgent  = dzenColor "#FF0000" "" . wrap "*" "*"
+  , ppLayout  = dzenColor "#909090" ""
+  , ppTitle   = shorten 80
+  , ppSep     = "  "
   }
 
 -- some nice colors for the prompt windows to match the xmobar status bar.
 myXPConfig = defaultXPConfig
-  { font     = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"
-  , fgColor  = "#00FFFF"
-  , bgColor  = "#000000"
-  , bgHLight = "#000000"
-  , fgHLight = "#FF0000"
-  , position = Top
+  { XMonad.Prompt.font = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*"
+  , fgColor            = "#909090"
+  , bgColor            = "#303030"
+  , bgHLight           = "#000000"
+  , fgHLight           = "#FF0000"
+  , position           = Top
   }
  
 --- My Theme For Tabbed layout
 myTheme = defaultTheme 
   { decoHeight          = 16
-  , activeColor         = "#a6c292"
-  , activeBorderColor   = "#a6c292"
+  , activeColor         = "#A6C292"
+  , activeBorderColor   = "#A6C292"
   , activeTextColor     = "#000000"
   , inactiveBorderColor = "#000000"
   }
@@ -171,14 +220,14 @@ myLayoutHook = onWorkspace "1:chat" webL $ onWorkspace "2:web" webL $ onWorkspac
 ---- Terminal --
 myTerminal :: String
 myTerminal = "urxvt"
- 
+
 -------------------------------------------------------------------------------
 -- Keys/Button bindings --
 -- modmask
 myModMask :: KeyMask
 myModMask = mod4Mask
 altMask   = mod1Mask
-   
+
 -- borders
 myBorderWidth :: Dimension
 myBorderWidth = 1
@@ -239,20 +288,29 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask,   xK_l      ), sendMessage MirrorExpand           )
 
   -- Programs
-  , ((modMask,                 xK_b      ), spawn "/usr/bin/google-chrome"     )
-  , ((modMask,                 xK_o      ), spawn "/usr/bin/ooffice"           )
-  , ((modMask,                 xK_Print  ), spawn "/home/scripts/scrotinput"   )
+  , ((modMask,                 xK_b      ), spawn myBrowser                    )
+  , ((modMask,                 xK_o      ), spawn myOffice                     )
+  , ((modMask,                 xK_Print  ), spawn myScrot                      )
 
   -- quit or restart
   , ((modMask .|. shiftMask,   xK_q      ), io (exitWith ExitSuccess)          )
-  , ((modMask,                 xK_q      ), restart "xmonad" True              )
+  , ((modMask,                 xK_q      ), spawn myRestart                    )
   -- lockscreen
-  , ((controlMask .|. altMask, xK_l      ), spawn "/home/scripts/locks"        )
+  , ((controlMask .|. altMask, xK_l      ), spawn myLock                       )
   ]
   ++
   -- mod-[1..9] %! Switch to workspace N
   -- mod-shift-[1..9]] %! Move client to workspace N
   [ ((m .|. modMask, k), windows $ f i)
   | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-  , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-  ]
+  , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+  where
+    myBrowser = "$BROWSER"
+    myOffice  = "ooffice"
+    myScrot   = "scrotinput"
+    myLock    = "locks"
+    myRestart = "for pid in `pgrep conky`; do kill -9 $pid; done && " ++
+                "for pid in `pgrep dzen2`; do kill -9 $pid; done && " ++
+                "xmonad --recompile && xmonad --restart"
+
+-- vim:foldmethod=marker foldmarker={{{,}}} filetype=haskell expandtab shiftwidth=4 : 
