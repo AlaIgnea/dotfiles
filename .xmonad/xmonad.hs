@@ -105,8 +105,7 @@ myManageHook = scratchpadManageHook (W.RationalRect 0.25 0.375 0.5 0.35) <+> ( c
     myWebs         = ["Namoroka","Firefox","Google-chrome"] ++
                      ["Chromium", "Opera"]
 
-    myDocs         = ["OpenOffice.org 3.2","Evince","Epdfview"] ++
-                     ["LibreOffice"]
+    myDocs         = ["LibreOffice 3.3","Evince","Epdfview"]
 
     myGimp         = ["Gimp"]
 
