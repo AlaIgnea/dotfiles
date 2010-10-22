@@ -132,20 +132,20 @@ myLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
 myLeftBar :: DzenConf
 myLeftBar = defaultDzen
   { x_position  = 0
-  , width       = 875
+  , width       = 825
   }
 
 myRightBar :: DzenConf
 myRightBar = myLeftBar
-  { x_position  = 1175
-  , width       = 105
+  { x_position  = 1125
+  , width       = 155
   , alignment   = RightAlign
   }
 
 --dzenConf
 dzenConf :: DzenConf
 dzenConf = defaultDzen
-  { x_position  = 875
+  { x_position  = 825
   , width       = 300
   , fg_color    = "#606060"
   , bg_color    = "#303030"

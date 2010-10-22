@@ -7,4 +7,4 @@ update_interval 1
 total_run_times 0
 
 TEXT
-${time %a %b %d %H:%M}
+${if_match ${battery_percent BAT0} >=10}Bat: ${battery_percent BAT0}${endif}${if_match ${battery_percent BAT0} <= 10}${if_match "${acpiacadapter AC0}" == "off-line"}Low Bat!${color}${endif}${if_match "${acpiacadapter AC0}" == "on-line"}on AC${endif}  ${time %a %b %d %H:%M}
