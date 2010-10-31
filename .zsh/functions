@@ -19,6 +19,4 @@ extract () {
 	fi
 }
 
-grab() {
-	sudo chown -R ${USER} ${1:-.}
-}
+# vim: set ft=cfg tw=2 :

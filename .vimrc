@@ -107,3 +107,8 @@ if has ("autocmd")
 	au VimEnter * nohls
 endif
 
+"-----------------------------------------------
+" colemak.vim
+"-----------------------------------------------
+source ~/.vim/plugin/colemak.vim
+
