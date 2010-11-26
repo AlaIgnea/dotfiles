@@ -28,6 +28,7 @@ alias :q='exit'
 alias :q!='exit'
 alias ftp='ncftp'
 alias ncmpc='ncmpcpp'
+alias dt='dmesg | tail'
 
 alias sctr='scp dl/*.torrent uh@192.168.2.11: && rm dl/*.torrent'
 
